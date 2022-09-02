@@ -13,3 +13,5 @@ const week = domObj.week;
 addEvent(inbox, 'click', inboxSec);
 addEvent(today, 'click', todaySec);
 addEvent(week, 'click', weekSec);
+
+const formSec = domObj.form;

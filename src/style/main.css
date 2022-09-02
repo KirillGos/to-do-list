@@ -93,6 +93,23 @@ img {
     margin-left: 10px;
     font-size: 20px;
 }
+
+.form-sec {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    height: 300px;
+    width: 600px;
+    background-color: #fff;
+    padding: 15px;
+}
 footer {
     grid-column: 1 / 4;
     grid-row: 3 / 4;
