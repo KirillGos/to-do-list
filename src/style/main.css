@@ -17,7 +17,7 @@ body {
     height: 100%;
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 2fr 5fr;
     grid-template-rows: 2fr 10fr 1fr;
 }
 
@@ -42,7 +42,7 @@ body {
     font-size: 30px;
 }
 img {
-    height: 15px;
+    height: 20px;
 }
 
 .sidebar {
@@ -81,7 +81,7 @@ img {
 }
 
 .folder p {
-    font-size: 15px;
+    font-size: 20px;
 }
 .projects-header {
     margin: 20px 0px 0px 15px;
@@ -95,10 +95,23 @@ img {
     font-size: 20px;
 }
 .project {
-    display: flex;
+    display: flex;  
     align-items: center;
 }
-
+.delete-project {
+    margin-left: auto;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    width: 20px;
+    height: 20px;
+    display: grid;
+    border: none;
+}
+.delete-project:hover {
+    background-color: white;
+    color: black;
+}
 footer {
     grid-column: 1 / 4;
     grid-row: 3 / 4;
@@ -128,15 +141,9 @@ footer {
 
 .to-do-list-sec {
     display: grid;
-    /* gap: 5px;f */
+    overflow: auto;
 }
 
-.task-form {
-    height: 50px;
-    width: 500px;
-    background-color: cyan;
-    display: flex;
-}
 .hidden {
     display: none;
 }
