@@ -17,7 +17,7 @@ body {
     height: 100%;
     width: 100%;
     display: grid;
-    grid-template-columns: 2fr 5fr;
+    grid-template-columns: 2fr 6fr;
     grid-template-rows: 2fr 10fr 1fr;
 }
 
@@ -70,10 +70,12 @@ img {
     display: flex;
     align-items: center;   
     padding: 7px;
+    width: 70%;
+      
 }
 
 .folder:hover {
-    border: 3px solid rgb(125, 213, 164);
+   border: 3px solid rgb(125, 213, 164);
     border-radius: 10px;
 }
 .folder img {
@@ -97,6 +99,9 @@ img {
 .project {
     display: flex;  
     align-items: center;
+    border:rgb(107, 108, 131) solid 1px;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 .delete-project {
     margin-left: auto;
@@ -111,6 +116,16 @@ img {
 .delete-project:hover {
     background-color: white;
     color: black;
+}
+.project-cancel-btn {
+    background-color: rgb(255, 115, 115);
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.project-add-btn {
+    background-color: lightgreen;
+    border: 1px solid black;
+    border-radius: 10px;
 }
 footer {
     grid-column: 1 / 4;
@@ -131,19 +146,95 @@ footer {
 }
 
 .project-btns {
-    display: grid;
-    width: 100%;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     gap: 15px;
     /* justify-content: space-between;   */
-    
 }
-
+.project-btns button {
+    height: 30px;
+    width: 100px;
+}
+.project-name-input {
+    width: 220px;    
+    border-radius: 10px;
+    height: 30px;
+    margin-top: 5px;
+}
 .to-do-list-sec {
     display: grid;
     overflow: auto;
 }
 
+
+.task, .task-add-form {
+    display: flex;
+    background-color: lightgray;
+    padding: 5px 15px;
+    margin-bottom: 10px; 
+    width: 600px;
+}
+.task:hover {
+    border: 2px solid rgba(78, 195, 94, 0.8)
+}
+.task, .task-add-form button {
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+    border: none;
+
+}
+.add-task-btn {
+    margin: 0px 5px;
+    
+}
+.delete-task-btn {
+    margin-left: auto;
+    background-color: rgb(255, 74, 74);
+    color: white;
+}
+
+.add-task-form {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 10px;
+    width: 400px;
+    background-color: rgba(0, 0, 0, 0.1);
+    align-items: center;
+}
+
+
+.add-task-form input {
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    width: 200px;
+    margin: 5px;
+}
+
+.task-form-buttons {
+    display: flex;
+    justify-content: center;
+    width: 200px;
+
+}
+
+.submit-task {
+    background-color: lightgreen;
+    border: none;
+    padding: 5px 10px;
+    margin: 0px 5px;
+    border-radius: 10px;
+}
+.cancel-task {
+    background-color: rgb(255, 115, 115);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
 .hidden {
     display: none;
 }
+
+
