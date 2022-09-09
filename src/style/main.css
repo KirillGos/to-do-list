@@ -57,7 +57,9 @@ img {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     padding: 15px;
-    background-color:  rgb(185, 207, 195);;
+    background-color:  rgb(185, 207, 195);
+    position: relative;
+    /* display: flex; */
 }
 .folders {
     display: grid;
@@ -70,7 +72,7 @@ img {
     display: flex;
     align-items: center;   
     padding: 7px;
-    width: 70%;
+    width: 100%;
       
 }
 
@@ -83,10 +85,10 @@ img {
 }
 
 .folder p {
-    font-size: 20px;
+    font-size: 15px;
 }
 .projects-header {
-    margin: 20px 0px 0px 15px;
+    margin: 0px  0px 20px 15px;
 }
 .add-a-folder-sec {
     display: flex;
@@ -95,6 +97,10 @@ img {
 .add-a-project-p {
     margin-left: 10px;
     font-size: 20px;
+}
+
+.folder-name {
+    margin-bottom: 10px;
 }
 .project {
     display: flex;  
@@ -164,7 +170,11 @@ footer {
     display: grid;
     overflow: auto;
 }
-
+.tasks {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
 
 .task, .task-add-form {
     display: flex;
@@ -172,11 +182,17 @@ footer {
     padding: 5px 15px;
     margin-bottom: 10px; 
     width: 600px;
+    flex-shrink: 1;
 }
 .task:hover {
     border: 2px solid rgba(78, 195, 94, 0.8)
 }
-.task, .task-add-form button {
+
+.task {
+    align-items: center;
+
+}
+.task button, .task-add-form button {
     height: 20px;
     width: 20px;
     border-radius: 10px;
@@ -187,14 +203,21 @@ footer {
     margin: 0px 5px;
     
 }
-.delete-task-btn {
+
+.task-date {
     margin-left: auto;
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+}
+.delete-task-btn {
     background-color: rgb(255, 74, 74);
     color: white;
 }
 
 .add-task-form {
     display: flex;
+    padding: absolute;
     flex-direction: column;
     border: 1px solid black;
     padding: 10px;

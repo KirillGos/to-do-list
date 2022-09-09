@@ -1,46 +1,60 @@
 import { domObj, projects } from "../index";
 
-export function folderEvent(e) {
-    let currentFolder = e.target.dataset.index;
-}
+
+
 
 export function displayForm() {
-        domObj.elements.addTaskForm.classList.remove('hidden');
+    domObj.elements.addTaskForm.classList.remove('hidden');
+    domObj.elements.tasks.classList.add('hidden');
 }
 
-export  function createTask(e) {
-    let task = {}
-    console.log(projects)
-    console.log(e.target.dataset.index)
-    task.title = document.querySelector('.task-name').value;
-    task.date = document.querySelector('.task-date').value;
-    let index = e.target.dataset.index;
-    projects[index].task = task;
-    displayTask();
+
+export function cancelTask()  {
+    domObj.elements.addTaskForm.classList.add('hidden');
+    domObj.elements.tasks.classList.remove('hidden');
+    document.querySelector('.task-name').value = '';
+    document.querySelector('.task-date-input').value = '';
+ }
+
+export function createTaskProperties(title, date) {
+    return { title, date }
 }
+
 
 export function displayTask(e) {
-     domObj.tasks.innerText = '';
-    for(let i = 0; i < projects.length; i++) {
-        if(projects[i].title !== undefined && projects[i].date !== undefined) {
-            const task = document.createElement('div');
-            task.classList.add('task');
+    domObj.elements.tasks.classList.remove('hidden');
 
-            const title = document.createElement('p');
-            title.classList.add('title-task');
-            title.innerText = projects[i].title;
+        // info
+        const dateInput = document.querySelector('.task-date-input');
+        const nameInput = document.querySelector('.task-name');
 
-            const date = document.createElement('input');
-            date.classList.add('task-date');
-            date.value = projects[i].date;
+        const task = document.createElement('div');
+        task.classList.add('task');
 
-            const deleteTaskBtn = document.createElement('button');
-            deleteTaskBtn.classList.add('.delete-task-btn');
-            deleteTaskBtn.innerText = 'X';
-            
+        const title = document.createElement('p');
+        title.classList.add('title-task');
+        title.innerText = nameInput.value;
+       
+        const date = document.createElement('input');
+        date.setAttribute('type', 'date');
+        date.setAttribute('class', 'task-date');
+        date.value = dateInput.value; 
 
-            task.appendChild(deleteTaskBtn);
-        };
-    };
+        const deleteTaskBtn = document.createElement('button');
+        deleteTaskBtn.classList.add('delete-task-btn');
+        deleteTaskBtn.innerText = 'X';
+        
+        task.appendChild(title);
+        task.appendChild(date);
+        task.appendChild(deleteTaskBtn);
+         domObj.elements.tasks.appendChild(task);
+
+        // create task object
+        const taskObj = new createTaskProperties(nameInput.value, dateInput.value );
+        console.log(taskObj);
+
+        //  hide the adding form
+        domObj.elements.addTaskForm.classList.add('hidden');
+        nameInput.value = '';
+        dateInput.value = '';
 };
-
