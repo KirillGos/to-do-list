@@ -5,7 +5,6 @@ import {
     addProject,
     projectCancel,
     displayProject,
-    bubling,
     folderClick
 } from '../src/modules/project';
 
@@ -13,7 +12,7 @@ import {
     displayForm,
     displayTask, 
     cancelTask,
-  
+    addToTask
 
 } from '../src/modules/task';
 
@@ -48,16 +47,16 @@ export const domObj = {
         domObj.buttons.projectCancelBtn.addEventListener('click', projectCancel);
 
         domObj.buttons.bringTaskAddFormBtn.addEventListener('click', displayForm);
-        domObj.buttons.addTaskBtn.addEventListener('click', displayTask);
+        domObj.buttons.addTaskBtn.addEventListener('click', addToTask);
         domObj.buttons.cancelTaskBtn.addEventListener('click', cancelTask);
     }
 }
 
 export const projects = [ {
-    name: "Demo"
+    name: "Demo",
+    tasks: []
 }];
 
 
 domObj.events();
 displayProject();
-// bubling()

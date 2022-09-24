@@ -1,4 +1,5 @@
 import { domObj, projects } from "../index";
+import { displayTask } from "./task";
 
 export function showProjectNameForm() {
     let allProjects =  Array.from(document.querySelectorAll('.project'));
@@ -14,6 +15,7 @@ export function showProjectNameForm() {
 class createProject {
     constructor(name) {
         this.name = name;
+        this.tasks = [];
     }
 }
 
@@ -22,6 +24,7 @@ export function addProject() {
     if(projectName !== undefined && projectName !== '') {
         const newProject = new createProject(projectName);
         projects.push(newProject);
+        console.log(projects[1].tasks)
         displayProject();
     } else {
         alert('Project name can\'t be empty');
@@ -53,8 +56,10 @@ export function displayProject() {
         project.appendChild(logoImg);
         project.appendChild(projectText);
         project.appendChild(deleteBtn);
-
-
+        if(projects.length == 1) {
+            domObj.elements.folderName.innerText = projects[i].name;
+        }
+        
         domObj.elements.projectsFolder.appendChild(project);  
     }
     // display projects and hide the project name form
@@ -62,29 +67,27 @@ export function displayProject() {
         item.classList.remove('hidden');
     });
     
-    bubling();
+    let allProjects = Array.from(document.querySelectorAll('.project'));
+         allProjects.map(div => {
+            div.addEventListener('click', folderClick);
+         });
 
     domObj.buttons.addFolderBtn.classList.remove('hidden');
     domObj.elements.projectNameForm.classList.add('hidden');
 };
 
-export function bubling() {
-    let allProjects = Array.from(document.querySelectorAll('.project'));
-    if(allProjects.length > 1) {
-         allProjects.forEach(div => {
-            div.addEventListener('click', folderClick);
-        });
-    }
-}
+
+
 
 
 export function folderClick(e) {    
     if(!e.target.className.includes('delete-project')) {
-        e.stopPropagation();
         let index = this.dataset.index;
         if(projects.length > 0) {
+            displayTask(index);
             domObj.elements.folderName.innerText = projects[index].name;
             domObj.elements.folderName.setAttribute('data-index', index);
+
         } else {
             domObj.elements.folderName.innerText = '';
         }
@@ -93,20 +96,21 @@ export function folderClick(e) {
 }
 
 export function deleteProject(e) {
+
     let index = e.target.parentElement.dataset.index;
+    console.log(index)
     projects.splice(index, 1);
     displayProject();
-    if (domObj.elements.folderName.dataset.index != 0) {
-         domObj.elements.folderName.dataset.index -= 1; 
-        domObj.elements.folderName.innerText = projects[ document.querySelector('.folder-name').dataset.index].name;
+    if(projects.length > 0) {
+         domObj.elements.folderName.innerText = projects[0].name;
+        domObj.elements.folderName.dataset.index = 0;
+    } else {
+        domObj.elements.folderName.innerText = '';
     }
- 
+   
     let allProjects = Array.from(document.querySelectorAll('.project'));
      for(let a = 0; a < projects.length; a++) {
          allProjects[a].setAttribute('data-index', a);
-     }
-     if(projects.length == 0) {
-        domObj.elements.folderName.innerText = 'no';
      }
  }
 
